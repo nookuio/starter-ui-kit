@@ -40,29 +40,24 @@ function updateDocumentTheme() {
 </script>
 
 <template>
+  <Header />
   <div
     class="flex flex-col items-center justify-center bg-white text-neutral-900 p-2.5 gap-y-2.5 h-screen dark:bg-neutral-950 dark:text-zinc-50"
   >
-    <div class="flex p-2.5 text-white flex-col gap-y-2.5">
-      <h2 class="text-3xl font-bold">Buttons</h2>
-      <div class="flex flex-col gap-y-2">
+    <h1 class="text-6xl font-bold text-center">Starter Kit</h1>
+    <div class="flex p-2.5 text-white flex-col">
+      <div class="flex gap-x-2">
+        <UiButton class="w-fit" label="Primary Button" />
         <UiButton
           class="w-fit min-width max-width"
           label="Secondary Button"
           type="secondary"
           @click="console.log($event)"
         />
-        <UiButton class="w-fit" label="Primary Button" />
         <UiButton class="w-fit" label="Outline Button" type="outline" />
       </div>
     </div>
-    <Sidemenu v-model:open="sidebarVisible" position="left"
-      ><h3 class="text-2xl font-bold">dsa dadsada</h3></Sidemenu
-    >
-    <h1 class="text-4xl font-bold">
-      {{ notifications?.variable }} {{ notifications?.double }}
-    </h1>
-    <h1 class="text-6xl font-bold text-center">Starter Kit</h1>
+    <Sidemenu v-model:open="sidebarVisible" position="left" />
     <div class="flex gap-x-2.5 items-center">
       <div class="relative">
         <span
@@ -71,7 +66,7 @@ function updateDocumentTheme() {
           ><Icon name="heroicons:x-mark" size="13"
         /></span>
         <UiInput
-          class="w-[700px]"
+          class="w-[500px]"
           placeholder="Search..."
           v-model:bind-value="inputValue"
           type="text"
