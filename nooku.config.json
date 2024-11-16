@@ -1,0 +1,43 @@
+{
+    "formulas": [
+        {
+            "meta": {
+                "name": "useColorMode",
+                "description": "",
+                "from": "@nuxtjs/color-mode"
+            },
+            "key": "useColorMode",
+            "params": []
+        }
+    ],
+    "components": [
+        {
+            "meta": {
+                "name": "ColorScheme",
+                "description": "",
+                "category": "Nuxt Color Mode",
+                "icon": "heroicons:moon",
+                "from": "@nuxtjs/color-mode"
+            },
+            "type": "component",
+            "tagName": "ColorScheme",
+            "props": [
+                {
+                    "label": "Tag name",
+                    "type": "Text",
+                    "description": "The tagname to use.",
+                    "key": "tag",
+                    "placeholder": "E.g. span"
+                },
+                {
+                    "label": "Placeholder",
+                    "type": "Text",
+                    "description": "",
+                    "key": "placeholder"
+                }
+            ]
+        }
+    ]
+
+    
+}

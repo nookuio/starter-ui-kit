@@ -1,288 +1,150 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
 
-const inputValue = ref<string>('');
-
-const selected = ref<number>(40);
-
-const sidebarVisible = ref(false);
+// State management for component demos
 
 const modalVisible = ref(false);
 
-const toggle = ref(false);
+const sidebarVisible = ref(false);
 
-const selectedOption = ref('text');
+const inputValue = ref('');
 
-const uploadedFiles = ref([]);
+const sliderValue = ref(50);
+
+const toggleValue = ref(false);
+
+const selectedTab = ref(0);
+
+const selectedDropdown = ref('option1');
+
+let dropdownOptions = [
+  {
+    label: 'Option 1',
+    value: 'option1',
+  },
+  {
+    label: 'Option 2',
+    value: 'option2',
+  },
+  {
+    label: 'Option 3',
+    value: 'option3',
+  },
+];
 
 const theme = useStorage('theme', 'light');
 
 const notifications = useNotifications();
 
-const themeAsCount = computed({
-  get: () => (theme?.value === 'dark' ? 1 : 0),
-  set: (value) => (theme.value = value === 1 ? 'dark' : 'light'),
-});
-
-function toggleTheme(
-  param: any = 'fsdfs',
-  param1: BaseTsPropertyNode,
-  param2: string,
-) {
-  if (theme?.value === 'light') {
-    theme.value = 'dark';
-  } else {
-    theme.value = 'light';
-  }
+function toggleTheme() {
+  theme.value = theme.value === 'light' ? 'dark' : 'light';
 
   updateDocumentTheme();
 }
 
 function updateDocumentTheme() {
-  if (theme?.value === 'light') {
-    document.documentElement.classList.remove('dark');
-  } else {
-    document.documentElement.classList.add('dark');
-  }
+  document.documentElement.classList.toggle('dark', theme.value === 'dark');
 }
 
-function addNotification() {
-  notifications?.add('error', 'Yo yO');
+function showNotification() {
+  notifications?.add('success', 'This is a sample notification');
 }
 </script>
 
 <template>
-  <Header />
-  <BaseModal v-model:open="modalVisible" title="Edit user"
-    ><div class="flex flex-col grow-[1] p-2 gap-y-2 overflow-auto">
-      <div class="flex gap-x-2.5 items-center">
-        <div class="relative">
-          <span
-            class="h-4 flex justify-center items-center w-4 rounded-[4px] absolute right-2 top-2 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-800"
-            @click="inputValue = ''"
-            ><Icon name="heroicons:x-mark" size="13"
-          /></span>
-          <UiInput
-            class="w-[500px]"
-            placeholder="Search..."
-            v-model:bind-value="inputValue"
-            type="text"
-            icon="heroicons:magnifying-glass"
+  <div class="min-h-screen bg-white p-8 dark:bg-neutral-950">
+    <div class="ml-auto mr-auto mb-8 max-w-7xl">
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-neutral-900 dark:text-white">
+          UI Components
+        </h1>
+        <ThemeChanger />
+      </div>
+    </div>
+    <div class="ml-auto mr-auto grid gap-x-8 gap-y-8 max-w-7xl">
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-neutral-900 mb-4 dark:text-white">
+          Buttons
+        </h2>
+        <div class="grid gap-x-4 gap-y-4 grid-cols-4">
+          <UiButton label="Primary Button" />
+          <UiButton label="Secondary Button" type="secondary" />
+          <UiButton label="Outline Button" type="outline" />
+          <UiButton
+            label="With Icon"
+            left-icon="heroicons:bolt"
+            type="primary"
           />
         </div>
-        <UiTooltip title="Hello, this is a tooltip" placement="left"
-          ><UiButton
-            class="w-[200px]"
-            label="Get Started"
-            left-icon="heroicons:bolt"
-            type="outline"
-            @click="
-              notifications?.addNow();
-              sidebarVisible = !sidebarVisible;
-            "
-        /></UiTooltip>
-        <UiTooltip :title="`Selected Index ${selected}`" placement="right"
-          ><h2 class="text-3xl font-bold">
-            {{ selected }} {{ themeAsCount }}
-          </h2></UiTooltip
-        >
-      </div>
-      <UiMultilineInput
-        :auto-resize="true"
-        :value="inputValue"
-        @input="inputValue = $event"
-      />
-      <UiSliderInput v-model:model-value="selected" />
-      <UiTabs
-        v-model:selected="themeAsCount"
-        :options="[
-          {
-            label: 'Light',
-            icon: 'heroicons:sun',
-          },
-          {
-            label: 'Dark',
-            icon: 'heroicons:moon',
-          },
-        ]"
-        @select="
-          console.log($event);
-          updateDocumentTheme();
-        "
-      />
-      <UiDropdown
-        label="Users Second"
-        :options="[
-          {
-            label: 'Text',
-            value: 'text',
-          },
-          {
-            label: 'Number',
-            value: 'number',
-          },
-          {
-            label: 'Email',
-            value: 'email',
-          },
-          {
-            label: 'Password',
-            value: 'password',
-          },
-          {
-            label: 'Check box',
-            value: 'checkbox',
-          },
-          {
-            label: 'Date',
-            value: 'date',
-          },
-          {
-            label: 'Time',
-            value: 'time',
-          },
-          {
-            label: 'Phone',
-            value: 'tel',
-          },
-          {
-            label: 'File',
-            value: 'file',
-          },
-        ]"
-        placement="left-start"
-      />
-      <UiCheckbox label="Accpet terms and conditons" /></div
-  ></BaseModal>
-  <BaseSlideOver v-model:open="sidebarVisible"
-    ><div class="flex grow-[1] p-2 flex-col">
-      <h1 class="text-base font-bold">This is a heading 1</h1>
-    </div></BaseSlideOver
-  >
-  <div
-    class="flex flex-col items-center justify-center bg-white text-neutral-900 p-2.5 gap-y-2.5 h-screen dark:bg-neutral-950 dark:text-zinc-50"
-  >
-    <UiFileUploader class="w-[500px]" @update="console.log($event)" />
-    <UiToggle v-model:bind-value="toggle" />
-    <h1 class="text-6xl font-bold text-center">Starter Kit</h1>
-    <div class="flex p-2.5 text-white flex-col">
-      <div class="flex gap-x-2">
-        <UiButton class="w-fit" label="Primary Button" />
-        <UiButton
-          class="w-fit min-width max-width"
-          label="Secondary Button"
-          type="secondary"
-          @click="
-            console.log($event);
-            modalVisible = !modalVisible;
-          "
-        />
-        <UiButton class="w-fit" label="Outline Button" type="outline" />
-        <UiButton
-          class="w-fit"
-          label="Add notificaiton"
-          type="outline"
-          @click="addNotification()"
-        />
-      </div>
+      </section>
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-neutral-900 mb-4 dark:text-white">
+          Inputs
+        </h2>
+        <div class="grid gap-x-4 gap-y-4 grid-cols-2">
+          <UiInput
+            v-model:bind-value="inputValue"
+            placeholder="Regular Input"
+            icon="heroicons:magnifying-glass"
+          />
+          <UiMultilineInput
+            v-model:bind-value="inputValue"
+            placeholder="Multiline Input"
+          />
+        </div>
+      </section>
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-neutral-900 mb-4 dark:text-white">
+          Interactive Components
+        </h2>
+        <div class="grid gap-x-4 gap-y-4 grid-cols-3">
+          <div class="space-y-4">
+            <UiSliderInput v-model:model-value="sliderValue" />
+            <UiToggle v-model:bind-value="toggleValue" />
+          </div>
+          <UiSelect
+            :options="dropdownOptions"
+            v-model:bind-value="selectedDropdown"
+          />
+          <UiDropdown class="w-fit" :options="dropdownOptions" />
+        </div>
+      </section>
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-neutral-900 mb-4 dark:text-white">
+          Modals & Overlays
+        </h2>
+        <div class="flex gap-x-4 gap-y-4">
+          <UiButton label="Open Modal" @click="modalVisible = true" />
+          <UiButton label="Open Sidebar" @click="sidebarVisible = true" />
+          <UiButton label="Show Notification" @click="showNotification" />
+        </div>
+      </section>
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-neutral-900 mb-4 dark:text-white">
+          Other Components
+        </h2>
+        <div class="grid gap-x-4 gap-y-4 grid-cols-2">
+          <UiTabs
+            v-model:selected="selectedTab"
+            :options="[
+              { label: 'Tab 1', icon: 'heroicons:home' },
+              { label: 'Tab 2', icon: 'heroicons:user' },
+              { label: 'Tab 3', icon: 'heroicons:cog' },
+            ]"
+          />
+          <UiFileUploader class="h-32" />
+        </div>
+      </section>
     </div>
-    <div class="flex gap-x-2.5 items-center">
-      <div class="relative">
-        <span
-          class="h-4 flex justify-center items-center w-4 rounded-[4px] absolute right-2 top-2 cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-800"
-          @click="inputValue = ''"
-          ><Icon name="heroicons:x-mark" size="13"
-        /></span>
-        <UiInput
-          class="w-[500px]"
-          placeholder="Search..."
-          v-model:bind-value="inputValue"
-          type="text"
-          icon="heroicons:magnifying-glass"
-        />
-      </div>
-      <UiTooltip title="Hello, this is a tooltip" placement="left"
-        ><UiButton
-          class="w-[200px]"
-          label="Get Started"
-          left-icon="heroicons:bolt"
-          type="outline"
-          @click="sidebarVisible = !sidebarVisible"
-      /></UiTooltip>
-      <UiTooltip :title="`Selected Index ${selected}`" placement="right"
-        ><h2 class="text-3xl font-bold">
-          {{ selected }} {{ themeAsCount }}
-        </h2></UiTooltip
-      >
-    </div>
-    <UiSliderInput class="w-1/2" v-model:model-value="selected" />
-    <UiTabs
-      class="w-[700px]"
-      v-model:selected="themeAsCount"
-      :options="[
-        {
-          label: 'Light',
-          icon: 'heroicons:sun',
-        },
-        {
-          label: 'Dark',
-          icon: 'heroicons:moon',
-        },
-      ]"
-      @select="
-        console.log($event);
-        updateDocumentTheme();
-      "
-    />
-    <UiDropdown trigger="hover" :selected="4" />
-    <UiSelect
-      class="min-w-[200px]"
-      :options="[
-        { icon: 'heroicons:bolt', label: 'Text', value: 'text' },
-        {
-          label: 'Number',
-          value: 'number',
-        },
-        {
-          label: 'Email',
-          value: 'email',
-        },
-        {
-          label: 'Password',
-          value: 'password',
-        },
-        {
-          label: 'Check box',
-          value: 'checkbox',
-        },
-        {
-          label: 'Date',
-          value: 'date',
-        },
-        {
-          label: 'Time',
-          value: 'time',
-        },
-        {
-          label: 'Phone',
-          value: 'tel',
-        },
-        {
-          label: 'File',
-          value: 'file',
-        },
-      ]"
-      :value="selectedOption"
-      @select="selectedOption = $event"
-    />
-    <UiSelect
-      class="w-[400px]"
-      placement="bottom"
-      :value="selectedOption"
-      :options="[{ data: [] }, 200, 400]"
-      v-model:bind-value="selectedOption"
-      placeholder="Latest News"
-    />
-    <UiCheckbox label="Accept terms and conditons" />
+    <BaseModal v-model:open="modalVisible" title="Sample Modal"
+      ><div class="p-4 flex grow-[1]">
+        <p>This is a sample modal content</p>
+      </div></BaseModal
+    >
+    <BaseSlideOver v-model:open="sidebarVisible"
+      ><div class="p-4 flex flex-col grow-[1]">
+        <p>This is a sample sidebar content</p>
+      </div></BaseSlideOver
+    >
   </div>
 </template>

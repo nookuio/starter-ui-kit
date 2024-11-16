@@ -21,7 +21,7 @@ const marginLeft = computed<any>(() => {
 
 <template>
   <div
-    class="text-sm border-[1px] border-[#E5E5E540] rounded-[6px] outline-none min-h-8 bg-neutral-100 border-solid text-neutral-500 cursor-pointer flex items-center p-0.5 dark:bg-neutral-900 dark:text-neutral-400 dark:border-solid dark:border-[1px] dark:border-neutral-800"
+    class="text-sm border-[1px] border-[#E5E5E540] rounded-[6px] outline-none min-h-8 bg-neutral-100 border-solid text-neutral-500 cursor-pointer flex items-center p-0.5 h-8 dark:bg-neutral-900 dark:text-neutral-400 dark:border-solid dark:border-[1px] dark:border-neutral-800"
   >
     <div class="flex items-center w-full relative h-7">
       <div

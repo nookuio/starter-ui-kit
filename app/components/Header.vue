@@ -24,7 +24,7 @@ let navItems = [
     <div
       class="flex w-full max-w-[1200px] rounded-[8px] border-[1px] border-neutral-200 justify-between pl-2 pr-2 text-sm text-neutral-900 backdrop-blur-[16px] dark:text-white dark:border-neutral-800"
     >
-      <div class="flex items-center gap-x-1 w-[200px]" id="header-left">
+      <div class="flex items-center gap-x-1 w-[220px]" id="header-left">
         <Icon name="heroicons:star" size="13" /> logo
       </div>
       <div class="flex" id="header-center">
@@ -40,9 +40,10 @@ let navItems = [
         </nav>
       </div>
       <div
-        class="flex items-center gap-x-2 w-[200px] justify-end"
+        class="flex items-center gap-x-2 w-[220px] justify-end"
         id="header-right"
       >
+        <ThemeChanger />
         <UiButton type="outline" size="small" label="Sign in" />
         <UiButton size="small" type="primary" label="Get Started" />
       </div>

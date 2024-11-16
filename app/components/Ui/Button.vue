@@ -44,6 +44,7 @@ const buttonStyles = computed<any>(() => {
     :style="{
       fontSize: buttonStyles?.fontSize,
       minHeight: buttonStyles?.height,
+      height: buttonStyles?.height,
     }"
     v-if="props?.type === 'primary'"
     :disabled="props.disabled"
@@ -66,6 +67,7 @@ const buttonStyles = computed<any>(() => {
     :style="{
       fontSize: buttonStyles?.fontSize,
       minHeight: buttonStyles?.height,
+      height: buttonStyles?.height,
     }"
     v-else-if="props?.type === 'secondary'"
     :disabled="props.disabled"
@@ -88,6 +90,7 @@ const buttonStyles = computed<any>(() => {
     :style="{
       fontSize: buttonStyles?.fontSize,
       minHeight: buttonStyles?.height,
+      height: buttonStyles?.height,
     }"
     v-else-if="props?.type === 'outline'"
     :disabled="props.disabled"

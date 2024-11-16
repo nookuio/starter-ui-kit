@@ -47,13 +47,14 @@ function handleSelect(option: any) {
 
 <template>
   <div
+    class="h-fit"
     :class="
       props.disabled ? 'opacity-70 pointer-events-none cursor-not-allowed' : ''
     "
   >
     <VDropdown :distance="6" placement="bottom" :aria-id="ariaId"
       ><div
-        class="text-sm pl-2 pr-2 border-[1px] border-neutral-200 rounded-[6px] outline-none min-h-8 bg-zinc-50 border-solid text-neutral-900 flex items-center cursor-pointer w-full justify-between gap-x-2 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border-[1px] dark:border-neutral-800 hover:bg-neutral-100 hover:border-solid hover:border-neutral-300 hover:border-[1px] dark:hover:bg-neutral-800 dark:hover:border-solid dark:hover:border-neutral-700 dark:hover:border-[1px]"
+        class="text-sm pl-2 pr-2 border-[1px] border-neutral-200 rounded-[6px] outline-none min-h-8 bg-zinc-50 border-solid text-neutral-900 flex items-center cursor-pointer w-full justify-between gap-x-2 h-8 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border-[1px] dark:border-neutral-800 hover:bg-neutral-100 hover:border-solid hover:border-neutral-300 hover:border-[1px] dark:hover:bg-neutral-800 dark:hover:border-solid dark:hover:border-neutral-700 dark:hover:border-[1px]"
         ref="inputRef"
       >
         <div class="flex gap-x-1 items-center">

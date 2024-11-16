@@ -9,7 +9,11 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@pinia/nuxt',
     '@nookuio/nuxt',
+    '@nuxtjs/color-mode',
   ],
   runtimeConfig: {},
   future: { compatibilityVersion: 4 },
+  colorMode: {
+    classSuffix: ''
+  }
 });

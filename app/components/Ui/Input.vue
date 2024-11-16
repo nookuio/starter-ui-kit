@@ -39,7 +39,7 @@ const inputType = computed(() => {
 
 <template>
   <div
-    class="text-sm pl-2 pr-1.5 border-[1px] border-neutral-200 rounded-[6px] outline-none min-h-8 bg-zinc-50 border-solid text-neutral-900 flex items-center gap-x-1 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border-[1px] dark:border-neutral-800 focus-within:border-neutral-400 dark:focus-within:border-neutral-700 has-[input:invalid]:border-red-500 dark:has-[input:invalid]:border-red-500"
+    class="text-sm pl-2 pr-1.5 border-[1px] border-neutral-200 rounded-[6px] outline-none min-h-8 bg-zinc-50 border-solid text-neutral-900 flex items-center gap-x-1 h-8 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border-[1px] dark:border-neutral-800 focus-within:border-neutral-400 dark:focus-within:border-neutral-700 has-[input:invalid]:border-red-500 dark:has-[input:invalid]:border-red-500"
     :class="
       props.disabled ? 'opacity-70 pointer-events-none cursor-not-allowed' : ''
     "
