@@ -40,7 +40,7 @@ const buttonStyles = computed<any>(() => {
 
 <template>
   <button
-    class="bg-neutral-950 rounded-[6px] font-medium pl-4 pr-4 text-white transition-colors flex items-center gap-x-1 justify-center hover:bg-neutral-800 disabled:opacity-[0.7] disabled:pointer-events-none dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+    class="bg-neutral-950 rounded-[6px] font-medium pl-4 pr-4 text-white transition-colors flex items-center gap-x-1 justify-center outline-none hover:bg-neutral-800 disabled:opacity-[0.7] disabled:pointer-events-none dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
     :style="{
       fontSize: buttonStyles?.fontSize,
       minHeight: buttonStyles?.height,
@@ -62,7 +62,7 @@ const buttonStyles = computed<any>(() => {
     /></slot>
   </button>
   <button
-    class="bg-neutral-100 rounded-[6px] font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center hover:bg-neutral-200 disabled:opacity-[0.7] disabled:pointer-events-none dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-900"
+    class="bg-neutral-100 rounded-[6px] font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center outline-none hover:bg-neutral-200 disabled:opacity-[0.7] disabled:pointer-events-none dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-900"
     :style="{
       fontSize: buttonStyles?.fontSize,
       minHeight: buttonStyles?.height,
@@ -84,7 +84,7 @@ const buttonStyles = computed<any>(() => {
     /></slot>
   </button>
   <button
-    class="bg-white rounded-[6px] font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center border-[1px] border-neutral-200 hover:bg-neutral-100 disabled:opacity-[0.7] disabled:pointer-events-none dark:text-white dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800"
+    class="bg-white rounded-[6px] font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center border-[1px] border-neutral-200 outline-none hover:bg-neutral-100 disabled:opacity-[0.7] disabled:pointer-events-none dark:text-white dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800"
     :style="{
       fontSize: buttonStyles?.fontSize,
       minHeight: buttonStyles?.height,

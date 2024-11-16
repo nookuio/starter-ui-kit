@@ -1,7 +1,9 @@
 <script setup lang="ts">
 interface Props {
-  cView?: string;
+  loading?: boolean;
 }
+
+const props = defineProps<Props>();
 
 const currentView = ref<'signIn' | 'signUp' | 'forgotPassword'>('signUp');
 
@@ -82,6 +84,7 @@ const slate = ref({
           <UiInput
             placeholder="you@example.com"
             v-model:bind-value="slate.email"
+            type="email"
           />
         </div>
         <div class="flex flex-col">
@@ -94,7 +97,7 @@ const slate = ref({
             v-model:bind-value="slate.password"
           />
         </div>
-        <UiButton label="Sign Up" />
+        <UiButton label="Sign Up" :loading="props?.loading" />
       </form>
       <form
         class="ml-auto mr-auto w-full flex flex-col gap-y-2.5"
@@ -127,7 +130,7 @@ const slate = ref({
             v-model:bind-value="slate.password"
           />
         </div>
-        <UiButton label="Sign In" />
+        <UiButton label="Sign In" :loading="props?.loading" />
       </form>
     </div>
     <div class="flex text-xs font-medium justify-center gap-x-1">

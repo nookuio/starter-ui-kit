@@ -30,7 +30,7 @@ function updateValue() {
     <span
       class="p-px checkbox group-[.active]:bg-neutral-800 group-[.active]:border-neutral-800 dark:group-[.active]:bg-white dark:group-[.active]:border-white"
       ><Icon
-        class="text-white dark:text-black group-[.active]:visible"
+        class="text-white hidden dark:text-black group-[.active]:block"
         name="mdi:check-bold"
     /></span>
     <span

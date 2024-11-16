@@ -43,7 +43,7 @@ const marginLeft = computed<any>(() => {
         </div>
       </div>
       <div
-        class="flex items-center justify-center rounded-[4px] absolute bg-white transition-all pl-3 pr-3 shadow-neutral-200 border-solid border-[1px] border-neutral-100 top-0 bottom-0 shadow-[0px_2px_5px_-1px] dark:bg-neutral-800 dark:shadow-neutral-900 dark:border-solid dark:border-[#40404030] dark:border-[1px]"
+        class="flex items-center justify-center rounded-[4px] absolute bg-white transition-all pl-3 pr-3 shadow-neutral-300 border-solid border-[1px] border-neutral-100 top-0 bottom-0 shadow-[0px_2px_5px_-1px] dark:bg-neutral-800 dark:shadow-neutral-900 dark:border-solid dark:border-[#40404030] dark:border-[1px]"
         :style="{ width: tabWidth, left: marginLeft }"
       ></div>
     </div>

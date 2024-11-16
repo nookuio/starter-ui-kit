@@ -1,23 +1,35 @@
-interface Nodes {
-  item: true;
+interface Notification {
+  id: string;
+  type: 'error' | 'alert' | 'info' | 'success';
+  message: string;
 }
 
 export const useNotifications = defineStore('notifications', () => {
-  const variable = ref<number>(0);
+  const notifications = ref<any[]>([]);
 
-  let items: any[] = [];
+  function add(type: 'error' | 'alert' | 'info' | 'success', message: string) {
+    const n = {
+      id: generateId(),
+      type,
+      message,
+    };
 
-  const data = ref<TsTypeNode>();
+    notifications.value.push(n);
 
-  const double = computed(() => {
-    return variable.value * 4;
-  });
-
-  function addNow() {
-    variable.value += 100;
-
-    return variable;
+    setTimeout(() => clear(n.id as string), 4000);
   }
 
-  return { variable, items, data, double, addNow };
+  function clear(id: string) {
+    if (!id) {
+      return;
+    }
+
+    const index = notifications.value.findIndex((n) => n.id === id);
+
+    if (index !== -1) {
+      notifications.value.splice(index, 1);
+    }
+  }
+
+  return { notifications, add, clear };
 });

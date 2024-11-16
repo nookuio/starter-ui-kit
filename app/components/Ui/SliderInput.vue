@@ -1,5 +1,6 @@
 <script setup lang="ts">
 interface Props {
+  disabled?: boolean;
   max?: number;
   min?: number;
   step?: number;
@@ -42,11 +43,14 @@ function handleClick(event: MouseEvent) {
   <div
     class="flex items-center relative h-5"
     ref="sliderEl"
+    :class="
+      props.disabled ? 'opacity-70 pointer-events-none cursor-not-allowed' : ''
+    "
     @click="handleClick"
   >
     <Teleport v-if="handlePressed" to="body"
       ><div
-        class="flex fixed top-0 left-0 bottom-0 right-0 z-[10]"
+        class="flex fixed top-0 left-0 bottom-0 right-0 z-[50]"
         @mousemove="handleSlide($event)"
         @mouseup="handlePressed = false"
         @mouseout="handlePressed = false"

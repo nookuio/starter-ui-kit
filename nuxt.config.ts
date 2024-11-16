@@ -5,13 +5,11 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/fonts',
     '@nuxtjs/tailwindcss',
-    '@nooku/nuxt',
     'floating-vue/nuxt',
     '@nuxt/icon',
     '@pinia/nuxt',
+    '@nookuio/nuxt',
   ],
   runtimeConfig: {},
-  future: {
-    compatibilityVersion: 4,
-  }
+  future: { compatibilityVersion: 4 },
 });
