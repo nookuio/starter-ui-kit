@@ -54,12 +54,20 @@ const buttonStyles = computed<any>(() => {
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
-      ><Icon name="eos-icons:loading" size="15"
+      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15"
     /></slot>
     <slot v-else
-      ><Icon v-if="props.leftIcon" :name="props.leftIcon" size="13" />
+      ><Icon
+        class="min-w-3.5 min-h-3.5"
+        v-if="props.leftIcon"
+        :name="props.leftIcon"
+        size="13" />
       <span>{{ props.label }}</span>
-      <Icon v-if="props?.rightIcon" :name="props?.rightIcon" size="13"
+      <Icon
+        class="min-w-3.5 min-h-3.5"
+        v-if="props?.rightIcon"
+        :name="props?.rightIcon"
+        size="13"
     /></slot>
   </button>
   <button
@@ -77,12 +85,20 @@ const buttonStyles = computed<any>(() => {
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
-      ><Icon name="eos-icons:loading" size="15"
+      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15"
     /></slot>
     <slot v-else
-      ><Icon v-if="props.leftIcon" :name="props.leftIcon" size="13" />
+      ><Icon
+        class="min-w-3.5 min-h-3.5"
+        v-if="props.leftIcon"
+        :name="props.leftIcon"
+        size="13" />
       <span>{{ props.label }}</span>
-      <Icon v-if="props?.rightIcon" :name="props?.rightIcon" size="13"
+      <Icon
+        class="min-w-3.5 min-h-3.5"
+        v-if="props?.rightIcon"
+        :name="props?.rightIcon"
+        size="13"
     /></slot>
   </button>
   <button
@@ -100,12 +116,20 @@ const buttonStyles = computed<any>(() => {
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
-      ><Icon name="eos-icons:loading" size="15"
+      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15"
     /></slot>
     <slot v-else
-      ><Icon v-if="props.leftIcon" :name="props.leftIcon" size="13" />
+      ><Icon
+        class="min-w-3.5 min-h-3.5"
+        v-if="props.leftIcon"
+        :name="props.leftIcon"
+        size="13" />
       <span>{{ props.label }}</span>
-      <Icon v-if="props?.rightIcon" :name="props?.rightIcon" size="13"
+      <Icon
+        class="min-w-3.5 min-h-3.5"
+        v-if="props?.rightIcon"
+        :name="props?.rightIcon"
+        size="13"
     /></slot>
   </button>
 </template>

@@ -38,7 +38,12 @@ const marginLeft = computed<any>(() => {
         "
       >
         <div class="flex items-center gap-x-1 z-[1] w-full justify-center h-7">
-          <Icon v-if="option?.icon" :name="option?.icon" size="15" />
+          <Icon
+            class="min-w-3.5 min-h-3.5"
+            v-if="option?.icon"
+            :name="option?.icon"
+            size="13"
+          />
           <span>{{ typeof option === 'object' ? option?.label : option }}</span>
         </div>
       </div>
