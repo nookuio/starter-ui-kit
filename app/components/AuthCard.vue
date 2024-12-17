@@ -7,17 +7,12 @@ const props = defineProps<Props>();
 
 const currentView = ref<'signIn' | 'signUp' | 'forgotPassword'>('signUp');
 
-const slate = ref({
-  first_name: '',
-  last_name: '',
-  email: '',
-  password: '',
-});
+const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
 </script>
 
 <template>
   <div
-    class="flex p-2 rounded-[8px] border-[1px] border-neutral-200 flex-col gap-y-5 text-neutral-700 bg-white w-[400px] dark:text-neutral-300 dark:border-[#26262600] dark:bg-neutral-950"
+    class="flex p-2 rounded-lg border border-neutral-200 flex-col gap-y-5 text-neutral-700 bg-white w-[400px] dark:text-neutral-300 dark:border-[#26262600] dark:bg-neutral-950"
   >
     <div class="flex flex-col gap-y-1">
       <h2 class="text-2xl font-bold text-neutral-950 dark:text-white">
@@ -37,8 +32,7 @@ const slate = ref({
         type="outline"
         label="Continue with Github"
         left-icon="carbon:logo-github"
-      />
-      <UiButton
+      /><UiButton
         class="w-full"
         type="outline"
         label="Continue with Google"
@@ -48,8 +42,8 @@ const slate = ref({
     <div class="flex h-10 items-center justify-center relative">
       <span
         class="w-full h-px bg-neutral-200 absolute top-[22px] dark:bg-neutral-800"
-      ></span>
-      <span class="text-xs z-[10] p-1 bg-white dark:bg-neutral-950">or</span>
+      ></span
+      ><span class="text-xs z-10 p-1 bg-white dark:bg-neutral-950">or</span>
     </div>
     <div class="flex flex-col gap-y-2">
       <form
@@ -61,8 +55,7 @@ const slate = ref({
           <div class="flex w-1/2 flex-col">
             <label class="block mb-2 text-xs font-medium" for="first-name"
               >First name</label
-            >
-            <UiInput
+            ><UiInput
               placeholder="First name"
               v-model:bind-value="slate.first_name"
             />
@@ -70,18 +63,15 @@ const slate = ref({
           <div class="flex w-1/2 flex-col">
             <label class="block mb-2 text-xs font-medium" for="last-name"
               >Last name</label
-            >
-            <UiInput
+            ><UiInput
               placeholder="Last name"
               v-model:bind-value="slate.last_name"
             />
           </div>
         </div>
         <div class="flex flex-col">
-          <label class="block mb-2 text-xs font-medium" for="email"
-            >Email</label
-          >
-          <UiInput
+          <label class="block mb-2 text-xs font-medium" for="email">Email</label
+          ><UiInput
             placeholder="you@example.com"
             v-model:bind-value="slate.email"
             type="email"
@@ -90,8 +80,7 @@ const slate = ref({
         <div class="flex flex-col">
           <label class="block mb-2 text-xs font-medium" for="password"
             >Password</label
-          >
-          <UiInput
+          ><UiInput
             placeholder="••••••••"
             type="password"
             v-model:bind-value="slate.password"
@@ -105,10 +94,8 @@ const slate = ref({
         id="sign-in-form"
       >
         <div class="flex flex-col">
-          <label class="block mb-2 text-xs font-medium" for="email"
-            >Email</label
-          >
-          <UiInput
+          <label class="block mb-2 text-xs font-medium" for="email">Email</label
+          ><UiInput
             placeholder="you@example.com"
             v-model:bind-value="slate.email"
           />
@@ -117,8 +104,7 @@ const slate = ref({
           <div class="flex items-center justify-between">
             <label class="block mb-2 text-xs font-medium" for="password"
               >Password</label
-            >
-            <span
+            ><span
               class="text-neutral-600 cursor-pointer text-xs dark:text-neutral-400 hover:text-neutral-800 hover:underline dark:hover:text-neutral-100"
               @click="currentView = 'forgotPassword'"
               >Forgot password?</span
@@ -138,14 +124,13 @@ const slate = ref({
         currentView !== 'signUp'
           ? 'Already have an account?'
           : `Don't have an account?`
-      }}</span>
-      <span
+      }}</span
+      ><span
         class="text-neutral-900 underline cursor-pointer dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300"
         v-if="currentView === 'signIn'"
         @click="currentView = 'signUp'"
         >Sign up now</span
-      >
-      <span
+      ><span
         class="text-neutral-900 underline cursor-pointer dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300"
         v-if="currentView !== 'signIn'"
         @click="currentView = 'signIn'"
