@@ -21,21 +21,19 @@
             },
             "type": "component",
             "tagName": "ColorScheme",
-            "props": [
-                {
+            "props": {
+                "tag": {
                     "label": "Tag name",
                     "type": "Text",
                     "description": "The tagname to use.",
-                    "key": "tag",
                     "placeholder": "E.g. span"
                 },
-                {
+                "placeholder": {
                     "label": "Placeholder",
                     "type": "Text",
-                    "description": "",
-                    "key": "placeholder"
+                    "description": ""
                 }
-            ]
+            }
         }
     ]
 

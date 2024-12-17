@@ -11,17 +11,17 @@
     },
     "devDependencies": {
         "@iconify/vue": "^4.1.2",
-        "@nookuio/nuxt": "^1.0.7",
-        "@nuxt/icon": "^1.7.5",
+        "@nookuio/nuxt": "^1.0.10",
+        "@nuxt/icon": "^1.10.2",
         "@nuxtjs/color-mode": "^3.5.2",
-        "@nuxtjs/tailwindcss": "^6.12.0",
+        "@nuxtjs/tailwindcss": "^6.12.2",
         "@vueuse/core": "^10.10.0",
-        "@vueuse/nuxt": "^10.10.0",
+        "@vueuse/nuxt": "^12.0.0",
         "nuxt": "^3.14.159"
     },
     "dependencies": {
-        "@nuxt/fonts": "^0.7.0",
-        "@pinia/nuxt": "^0.5.4",
+        "@nuxt/fonts": "^0.10.3",
+        "@pinia/nuxt": "^0.9.0",
         "floating-vue": "^5.2.2",
         "pinia": "^2.2.2"
     }

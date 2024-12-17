@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
 
-// State management for component demos
-
 const modalVisible = ref(false);
 
 const sidebarVisible = ref(false);
 
 const inputValue = ref('');
 
-const sliderValue = ref(50);
+const sliderValue = ref(10);
 
 const toggleValue = ref(false);
 
@@ -18,18 +16,9 @@ const selectedTab = ref(0);
 const selectedDropdown = ref('option1');
 
 let dropdownOptions = [
-  {
-    label: 'Option 1',
-    value: 'option1',
-  },
-  {
-    label: 'Option 2',
-    value: 'option2',
-  },
-  {
-    label: 'Option 3',
-    value: 'option3',
-  },
+  { label: 'Option 1', value: 'option1' },
+  { label: 'Option 2', value: 'option2' },
+  { label: 'Option 3', value: 'option3' },
 ];
 
 const theme = useStorage('theme', 'light');
@@ -67,10 +56,10 @@ function showNotification() {
           Buttons
         </h2>
         <div class="grid gap-x-4 gap-y-4 grid-cols-4">
-          <UiButton label="Primary Button" />
-          <UiButton label="Secondary Button" type="secondary" />
-          <UiButton label="Outline Button" type="outline" />
-          <UiButton
+          <UiButton label="Primary Button" /><UiButton
+            label="Secondary Button"
+            type="secondary"
+          /><UiButton label="Outline Button" type="outline" /><UiButton
             label="With Icon"
             left-icon="heroicons:bolt"
             type="primary"
@@ -83,13 +72,12 @@ function showNotification() {
         </h2>
         <div class="grid gap-x-4 gap-y-4 grid-cols-2">
           <UiInput
-            v-model:bind-value="inputValue"
             placeholder="Regular Input"
             icon="heroicons:magnifying-glass"
-          />
-          <UiMultilineInput
-            v-model:bind-value="inputValue"
+            v-model:value="inputValue"
+          /><UiMultilineInput
             placeholder="Multiline Input"
+            v-model:value="inputValue"
           />
         </div>
       </section>
@@ -99,14 +87,15 @@ function showNotification() {
         </h2>
         <div class="grid gap-x-4 gap-y-4 grid-cols-3">
           <div class="space-y-4">
-            <UiSliderInput v-model:model-value="sliderValue" />
-            <UiToggle v-model:bind-value="toggleValue" />
+            <UiSliderInput v-model:value="sliderValue" /><UiToggle
+              v-model:value="toggleValue"
+            />
           </div>
           <UiSelect
+            class="w-[230px]"
             :options="dropdownOptions"
-            v-model:bind-value="selectedDropdown"
-          />
-          <UiDropdown class="w-fit" :options="dropdownOptions" />
+            v-model:value="selectedDropdown"
+          /><UiDropdown class="w-fit" :options="dropdownOptions" />
         </div>
       </section>
       <section class="space-y-4">
@@ -114,9 +103,30 @@ function showNotification() {
           Modals & Overlays
         </h2>
         <div class="flex gap-x-4 gap-y-4">
-          <UiButton label="Open Modal" @click="modalVisible = true" />
-          <UiButton label="Open Sidebar" @click="sidebarVisible = true" />
-          <UiButton label="Show Notification" @click="showNotification" />
+          <UiButton
+            label="Show Notification"
+            @click="showNotification"
+          /><UiModal title="hello" icon="carbon:contrast"
+            ><template #content="{ close }"
+              ><div class="p-2 grow flex flex-col gap-y-2.5">
+                <UiButton
+                  class="w-fit"
+                  label="Close"
+                  left-icon="heroicons:x-mark"
+                  size="small"
+                  type="secondary"
+                  @click="close()"
+                /></div></template></UiModal
+          ><UiSlideOver
+            icon="heroicons:adjustments-horizontal-16-solid"
+            title="Edit Settings"
+            placement="right"
+            ><template #content
+              ><div class="flex flex-col grow gap-y-2 p-2">
+                Content here
+              </div></template
+            ></UiSlideOver
+          >
         </div>
       </section>
       <section class="space-y-4">
@@ -131,20 +141,9 @@ function showNotification() {
               { label: 'Tab 2', icon: 'heroicons:user' },
               { label: 'Tab 3', icon: 'heroicons:cog' },
             ]"
-          />
-          <UiFileUploader class="h-32" />
+          /><UiFileUploader class="h-32" />
         </div>
       </section>
     </div>
-    <BaseModal v-model:open="modalVisible" title="Sample Modal"
-      ><div class="p-4 flex grow-[1]">
-        <p>This is a sample modal content</p>
-      </div></BaseModal
-    >
-    <BaseSlideOver v-model:open="sidebarVisible"
-      ><div class="p-4 flex flex-col grow-[1]">
-        <p>This is a sample sidebar content</p>
-      </div></BaseSlideOver
-    >
   </div>
 </template>

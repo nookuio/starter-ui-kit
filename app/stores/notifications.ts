@@ -1,18 +1,8 @@
-interface Notification {
-  id: string;
-  type: 'error' | 'alert' | 'info' | 'success';
-  message: string;
-}
-
 export const useNotifications = defineStore('notifications', () => {
-  const notifications = ref<any[]>([]);
+  const notifications = ref<Notification[]>([]);
 
   function add(type: 'error' | 'alert' | 'info' | 'success', message: string) {
-    const n = {
-      id: generateId(),
-      type,
-      message,
-    };
+    const n = { id: generateId(), type: type, message: message };
 
     notifications.value.push(n);
 

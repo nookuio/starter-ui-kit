@@ -3,31 +3,17 @@ interface Props {
   autoResize?: boolean;
   disabled?: boolean;
   placeholder?: string;
-  value?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   autoResize: true,
 });
 
-const bindValue = defineModel<string>('bindValue');
+const value = defineModel<string>('value');
 
 const emit = defineEmits<{ blur: [value: string]; input: [value: string] }>();
 
 const textareaRef = ref();
-
-const computedBindedValue = computed({
-  get: () => {
-    return bindValue?.value !== undefined ? bindValue?.value : props.value;
-  },
-  set: (value) => {
-    if (bindValue.value !== undefined) {
-      bindValue.value = value;
-    } else {
-      emit('input', value);
-    }
-  },
-});
 
 function adjustTextareaHeight() {
   if (props.autoResize && textareaRef.value) {
@@ -37,7 +23,7 @@ function adjustTextareaHeight() {
   }
 }
 
-watch(computedBindedValue, () => {
+watch(value, () => {
   nextTick(adjustTextareaHeight);
 });
 
@@ -56,7 +42,7 @@ onMounted(() => {
     <textarea
       class="text-sm outline-none text-neutral-900 w-full bg-transparent p-1.5 placeholder:text-neutral-400 dark:text-neutral-100"
       :placeholder="props.placeholder"
-      v-model="computedBindedValue"
+      v-model="value"
       spellcheck="false"
       ref="textareaRef"
       :class="props?.autoResize ? 'resize-none' : ''"

@@ -17,36 +17,32 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{ click: [MouseEvent] }>();
 
-const buttonStyles = computed<any>(() => {
+const styles = computed(() => {
   switch (props.size) {
-    case 'small':
-      return {
-        height: '25px',
-        fontSize: '12px',
-      };
-    case 'medium':
-      return {
-        height: '32px',
-        fontSize: '14px',
-      };
-    case 'large':
-      return {
-        height: '40px',
-        fontSize: '16px',
-      };
+    case 'small': {
+      return { height: '25px', fontSize: '12px' };
+    }
+
+    case 'medium': {
+      return { height: '32px', fontSize: '14px' };
+    }
+
+    case 'large': {
+      return { height: '40px', fontSize: '16px' };
+    }
   }
 });
 </script>
 
 <template>
   <button
-    class="bg-neutral-950 rounded-[6px] font-medium pl-4 pr-4 text-white transition-colors flex items-center gap-x-1 justify-center outline-none hover:bg-neutral-800 disabled:opacity-[0.7] disabled:pointer-events-none dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
-    :style="{
-      fontSize: buttonStyles?.fontSize,
-      minHeight: buttonStyles?.height,
-      height: buttonStyles?.height,
-    }"
+    class="bg-neutral-950 rounded-md font-medium pl-4 pr-4 text-white transition-colors flex items-center gap-x-1 justify-center outline-none hover:bg-neutral-800 disabled:opacity-70 disabled:pointer-events-none dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
     v-if="props?.type === 'primary'"
+    :style="{
+      fontSize: styles?.fontSize,
+      minHeight: styles?.height,
+      height: styles?.height,
+    }"
     :disabled="props.disabled"
     :class="{ 'pointer-events-none opacity-70': props.loading }"
     type="button"
@@ -54,16 +50,14 @@ const buttonStyles = computed<any>(() => {
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
-      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15"
-    /></slot>
-    <slot v-else
+      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15" /></slot
+    ><slot v-else
       ><Icon
         class="min-w-3.5 min-h-3.5"
         v-if="props.leftIcon"
         :name="props.leftIcon"
-        size="13" />
-      <span>{{ props.label }}</span>
-      <Icon
+        size="13" /><span>{{ props.label }}</span
+      ><Icon
         class="min-w-3.5 min-h-3.5"
         v-if="props?.rightIcon"
         :name="props?.rightIcon"
@@ -71,13 +65,13 @@ const buttonStyles = computed<any>(() => {
     /></slot>
   </button>
   <button
-    class="bg-neutral-100 rounded-[6px] font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center outline-none hover:bg-neutral-200 disabled:opacity-[0.7] disabled:pointer-events-none dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-900"
-    :style="{
-      fontSize: buttonStyles?.fontSize,
-      minHeight: buttonStyles?.height,
-      height: buttonStyles?.height,
-    }"
+    class="bg-neutral-100 rounded-md font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center outline-none hover:bg-neutral-200 disabled:opacity-70 disabled:pointer-events-none dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-900"
     v-else-if="props?.type === 'secondary'"
+    :style="{
+      fontSize: styles?.fontSize,
+      minHeight: styles?.height,
+      height: styles?.height,
+    }"
     :disabled="props.disabled"
     :class="{ 'pointer-events-none opacity-70': props.loading }"
     type="button"
@@ -85,16 +79,14 @@ const buttonStyles = computed<any>(() => {
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
-      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15"
-    /></slot>
-    <slot v-else
+      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15" /></slot
+    ><slot v-else
       ><Icon
         class="min-w-3.5 min-h-3.5"
         v-if="props.leftIcon"
         :name="props.leftIcon"
-        size="13" />
-      <span>{{ props.label }}</span>
-      <Icon
+        size="13" /><span>{{ props.label }}</span
+      ><Icon
         class="min-w-3.5 min-h-3.5"
         v-if="props?.rightIcon"
         :name="props?.rightIcon"
@@ -102,13 +94,13 @@ const buttonStyles = computed<any>(() => {
     /></slot>
   </button>
   <button
-    class="bg-white rounded-[6px] font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center border-[1px] border-neutral-200 outline-none hover:bg-neutral-100 disabled:opacity-[0.7] disabled:pointer-events-none dark:text-white dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800"
-    :style="{
-      fontSize: buttonStyles?.fontSize,
-      minHeight: buttonStyles?.height,
-      height: buttonStyles?.height,
-    }"
+    class="bg-white rounded-md font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center border border-neutral-200 outline-none hover:bg-neutral-100 disabled:opacity-70 disabled:pointer-events-none dark:text-white dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800"
     v-else-if="props?.type === 'outline'"
+    :style="{
+      fontSize: styles?.fontSize,
+      minHeight: styles?.height,
+      height: styles?.height,
+    }"
     :disabled="props.disabled"
     :class="{ 'pointer-events-none opacity-70': props.loading }"
     type="button"
@@ -116,16 +108,14 @@ const buttonStyles = computed<any>(() => {
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
-      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15"
-    /></slot>
-    <slot v-else
+      ><Icon class="min-w-4 min-h-4" name="eos-icons:loading" size="15" /></slot
+    ><slot v-else
       ><Icon
         class="min-w-3.5 min-h-3.5"
         v-if="props.leftIcon"
         :name="props.leftIcon"
-        size="13" />
-      <span>{{ props.label }}</span>
-      <Icon
+        size="13" /><span>{{ props.label }}</span
+      ><Icon
         class="min-w-3.5 min-h-3.5"
         v-if="props?.rightIcon"
         :name="props?.rightIcon"

@@ -57,14 +57,8 @@ let components: ComponentDoc[] = [
       },
     ],
     slots: [
-      {
-        name: 'default',
-        description: 'Default slot for button content',
-      },
-      {
-        name: 'loading',
-        description: 'Custom loading indicator content',
-      },
+      { name: 'default', description: 'Default slot for button content' },
+      { name: 'loading', description: 'Custom loading indicator content' },
     ],
     emits: [
       {
@@ -127,7 +121,7 @@ let components: ComponentDoc[] = [
         name: 'options',
         type: 'any[] | Array<{label: string, icon: string, value: any, onSelect?: Function}>',
         default:
-          '[{label: "Option 1", value: 1}, {label: "Option 2", value: 2}]',
+          '[{label: \"Option 1\", value: 1}, {label: \"Option 2\", value: 2}]',
         description: 'Array of dropdown options',
       },
       {
@@ -148,14 +142,8 @@ let components: ComponentDoc[] = [
       },
     ],
     slots: [
-      {
-        name: 'default',
-        description: 'Custom trigger element content',
-      },
-      {
-        name: 'dropdown',
-        description: 'Custom dropdown menu content',
-      },
+      { name: 'default', description: 'Custom trigger element content' },
+      { name: 'dropdown', description: 'Custom dropdown menu content' },
     ],
     emits: [
       {
@@ -177,11 +165,7 @@ let components: ComponentDoc[] = [
         default: 'false',
         description: 'Disables the input',
       },
-      {
-        name: 'icon',
-        type: 'string',
-        description: 'Icon name to display',
-      },
+      { name: 'icon', type: 'string', description: 'Icon name to display' },
       {
         name: 'placeholder',
         type: 'string',
@@ -254,16 +238,8 @@ let components: ComponentDoc[] = [
         default: 'false',
         description: 'Disables the checkbox',
       },
-      {
-        name: 'label',
-        type: 'string',
-        description: 'Checkbox label',
-      },
-      {
-        name: 'value',
-        type: 'boolean',
-        description: 'Checkbox state',
-      },
+      { name: 'label', type: 'string', description: 'Checkbox label' },
+      { name: 'value', type: 'boolean', description: 'Checkbox state' },
     ],
     emits: [
       {
@@ -284,11 +260,7 @@ let components: ComponentDoc[] = [
         default: 'false',
         description: 'Disables the toggle',
       },
-      {
-        name: 'value',
-        type: 'boolean',
-        description: 'Toggle state',
-      },
+      { name: 'value', type: 'boolean', description: 'Toggle state' },
     ],
     emits: [
       {
@@ -327,21 +299,11 @@ let components: ComponentDoc[] = [
         default: 'bottom',
         description: 'Tooltip placement',
       },
-      {
-        name: 'title',
-        type: 'string',
-        description: 'Tooltip content',
-      },
+      { name: 'title', type: 'string', description: 'Tooltip content' },
     ],
     slots: [
-      {
-        name: 'default',
-        description: 'Trigger element content',
-      },
-      {
-        name: 'tooltip',
-        description: 'Custom tooltip content',
-      },
+      { name: 'default', description: 'Trigger element content' },
+      { name: 'tooltip', description: 'Custom tooltip content' },
     ],
   },
   {
@@ -433,8 +395,8 @@ let components: ComponentDoc[] = [
     ],
   },
   {
-    name: 'BaseModal',
-    category: 'Base',
+    name: 'UiModal',
+    category: 'UI',
     description: 'A modal dialog component with header support.',
     props: [
       {
@@ -443,30 +405,20 @@ let components: ComponentDoc[] = [
         default: 'true',
         description: 'Show modal header',
       },
-      {
-        name: 'title',
-        type: 'string',
-        description: 'Modal title',
-      },
+      { name: 'title', type: 'string', description: 'Modal title' },
     ],
     slots: [
-      {
-        name: 'default',
-        description: 'Modal content',
-      },
-      {
-        name: 'header',
-        description: 'Custom header content',
-      },
+      { name: 'default', description: 'Trigger slot' },
+      { name: 'content', description: 'Modal content' },
     ],
   },
   {
-    name: 'BaseSlideOver',
-    category: 'Base',
+    name: 'UiSlideOver',
+    category: 'UI',
     description: 'A slide-over panel component.',
     props: [
       {
-        name: 'position',
+        name: 'placement',
         type: "'left' | 'right'",
         default: 'right',
         description: 'Panel position',
@@ -479,17 +431,11 @@ let components: ComponentDoc[] = [
       },
     ],
     slots: [
-      {
-        name: 'default',
-        description: 'Panel content',
-      },
+      { name: 'default', description: 'Trigger slot' },
+      { name: 'content', description: 'Panel content' },
     ],
   },
 ];
-
-const showModal = ref(false);
-
-const showSlideOver = ref(false);
 
 const route = useRoute();
 </script>
@@ -499,13 +445,13 @@ const route = useRoute();
     class="bg-white text-neutral-900 flex h-screen dark:bg-neutral-950 dark:text-zinc-50"
   >
     <div
-      class="flex w-[300px] border-r-[1px] border-r-neutral-200 p-2.5 flex-col gap-y-1 text-sm min-w-[300px] dark:border-neutral-800 max-lg:hidden overflow-auto"
+      class="flex w-[300px] border-r border-r-neutral-200 p-2.5 flex-col gap-y-1 text-sm min-w-[300px] overflow-auto dark:border-neutral-800 max-lg:hidden"
     >
       <div class="flex items-center justify-between gap-x-1">
-        <span class="font-medium">Components</span> <ThemeChanger />
+        <span class="font-medium">Components</span><ThemeChanger />
       </div>
       <a
-        class="flex min-h-8 rounded-[4px] pl-2 pr-2 items-center text-sm cursor-pointer transition-all duration-150 gap-x-1 hover:bg-neutral-100 dark:hover:bg-neutral-900"
+        class="flex min-h-8 rounded pl-2 pr-2 items-center text-sm cursor-pointer transition-all duration-150 gap-x-1 hover:bg-neutral-100 dark:hover:bg-neutral-900"
         v-for="(component, i) in components"
         :key="component?.name"
         target="_self"
@@ -519,17 +465,16 @@ const route = useRoute();
           class="min-w-3.5 min-h-3.5"
           name="iconoir:component-solid"
           size="13"
-        />
-        <span>{{ component?.name }}</span></a
+        /><span>{{ component?.name }}</span></a
       >
     </div>
-    <div class="p-8 flex flex-col grow-[1] overflow-auto">
+    <div class="p-8 flex flex-col grow overflow-auto">
       <div class="mb-8">
         <h1 class="text-2xl font-bold mb-4">Component Documentation</h1>
       </div>
       <div class="space-y-12">
         <div
-          class="border-[1px] border-neutral-200 rounded-[8px] p-6 dark:border-neutral-800"
+          class="border border-neutral-200 rounded-lg p-6 dark:border-neutral-800"
           v-for="(component, currentIndex) in components"
           :key="component.name"
           :id="component?.name"
@@ -537,7 +482,7 @@ const route = useRoute();
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-xl font-semibold">{{ component.name }}</h2>
             <span
-              class="pl-2 pr-2 pt-1 pb-1 text-sm rounded-[9999px]"
+              class="pl-2 pr-2 pt-1 pb-1 text-sm rounded-full"
               :class="
                 component.category === 'UI'
                   ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100'
@@ -552,7 +497,7 @@ const route = useRoute();
           <div class="mb-6" v-if="component.props?.length">
             <h3 class="text-lg font-medium mb-3">Props</h3>
             <div
-              class="border-[1px] rounded-[8px] dark:border-neutral-800 overflow-hidden"
+              class="border rounded-lg overflow-hidden dark:border-neutral-800"
             >
               <table class="w-full text-sm">
                 <thead>
@@ -565,7 +510,7 @@ const route = useRoute();
                 </thead>
                 <tbody>
                   <tr
-                    class="border-t-[1px] dark:border-neutral-800"
+                    class="border-t dark:border-neutral-800"
                     v-for="(prop, currentIndex) in component.props"
                     :key="prop.name"
                   >
@@ -587,7 +532,7 @@ const route = useRoute();
           <div class="mb-6" v-if="component.slots?.length">
             <h3 class="text-lg font-medium mb-3">Slots</h3>
             <div
-              class="border-[1px] rounded-[8px] dark:border-neutral-800 overflow-hidden"
+              class="border rounded-lg overflow-hidden dark:border-neutral-800"
             >
               <table class="w-full text-sm">
                 <thead>
@@ -598,7 +543,7 @@ const route = useRoute();
                 </thead>
                 <tbody>
                   <tr
-                    class="border-t-[1px] dark:border-neutral-800"
+                    class="border-t dark:border-neutral-800"
                     v-for="(slot, currentIndex) in component.slots"
                     :key="slot.name"
                   >
@@ -614,7 +559,7 @@ const route = useRoute();
           <div class="mb-6" v-if="component.emits?.length">
             <h3 class="text-lg font-medium mb-3">Emits</h3>
             <div
-              class="border-[1px] rounded-[8px] dark:border-neutral-800 overflow-hidden"
+              class="border rounded-lg overflow-hidden dark:border-neutral-800"
             >
               <table class="w-full text-sm">
                 <thead>
@@ -626,7 +571,7 @@ const route = useRoute();
                 </thead>
                 <tbody>
                   <tr
-                    class="border-t-[1px] dark:border-neutral-800"
+                    class="border-t dark:border-neutral-800"
                     v-for="(emit, currentIndex) in component.emits"
                     :key="emit.name"
                   >
@@ -644,21 +589,29 @@ const route = useRoute();
           </div>
           <div>
             <h3 class="text-lg font-medium mb-3">Preview</h3>
-            <div class="border-[1px] rounded-[8px] p-6 dark:border-neutral-800">
+            <div class="border rounded-lg p-6 dark:border-neutral-800">
               <div
                 class="flex gap-x-4 gap-y-4"
                 v-if="component.name === 'UiButton'"
               >
-                <UiButton label="Primary" />
-                <UiButton label="Secondary" type="secondary" />
-                <UiButton class="w-[100px]" label="Outline" type="outline" />
-                <UiButton label="With Icon" left-icon="heroicons:bolt" />
-                <UiButton
+                <UiButton label="Primary" /><UiButton
+                  label="Secondary"
+                  type="secondary"
+                /><UiButton
+                  class="w-[100px]"
+                  label="Outline"
+                  type="outline"
+                /><UiButton
+                  label="With Icon"
+                  left-icon="heroicons:bolt"
+                /><UiButton
                   label="With Right Icon"
                   right-icon="heroicons:arrow-long-right"
-                />
-                <UiButton class="w-[100px]" label="Loading" :loading="true" />
-                <UiButton label="Disabled" :disabled="true" />
+                /><UiButton
+                  class="w-[100px]"
+                  label="Loading"
+                  :loading="true"
+                /><UiButton label="Disabled" :disabled="true" />
               </div>
               <div class="w-48" v-if="component.name === 'UiSelect'">
                 <UiSelect
@@ -673,9 +626,10 @@ const route = useRoute();
                 class="flex gap-x-4 gap-y-4"
                 v-if="component.name === 'UiInput'"
               >
-                <UiInput placeholder="Regular input" />
-                <UiInput placeholder="With icon" icon="heroicons:user" />
-                <UiInput type="password" placeholder="Password" />
+                <UiInput placeholder="Regular input" /><UiInput
+                  placeholder="With icon"
+                  icon="heroicons:user"
+                /><UiInput type="password" placeholder="Password" />
               </div>
               <div class="w-96" v-if="component.name === 'UiMultilineInput'">
                 <UiMultilineInput
@@ -687,49 +641,41 @@ const route = useRoute();
                 class="flex gap-x-4 gap-y-4"
                 v-if="component.name === 'UiCheckbox'"
               >
-                <UiCheckbox label="Unchecked" />
-                <UiCheckbox label="Checked" :value="true" />
-                <UiCheckbox label="Disabled" :disabled="true" />
+                <UiCheckbox label="Unchecked" /><UiCheckbox
+                  label="Checked"
+                  :value="true"
+                /><UiCheckbox label="Disabled" :disabled="true" />
               </div>
               <div
                 class="flex gap-x-4 gap-y-4"
                 v-if="component.name === 'UiToggle'"
               >
-                <UiToggle />
-                <UiToggle :value="true" />
-                <UiToggle :disabled="true" />
+                <UiToggle /><UiToggle :value="true" /><UiToggle
+                  :disabled="true"
+                />
               </div>
               <div
                 class="flex gap-x-4 gap-y-4"
                 v-if="component.name === 'UiTooltip'"
               >
                 <UiTooltip title="Basic tooltip"
-                  ><UiButton label="Hover me"
-                /></UiTooltip>
-                <UiTooltip placement="right" title="Right tooltip"
+                  ><UiButton label="Hover me" /></UiTooltip
+                ><UiTooltip placement="right" title="Right tooltip"
                   ><UiButton label="Right"
                 /></UiTooltip>
               </div>
               <div class="w-64" v-if="component.name === 'UiSliderInput'">
                 <UiSliderInput />
               </div>
-              <div v-if="component.name === 'BaseModal'">
-                <UiButton label="Open Modal" @click="showModal = true" />
-                <BaseModal v-model:open="showModal" title="Example Modal"
-                  ><div class="p-4">Modal content goes here</div></BaseModal
-                >
-              </div>
-              <div v-if="component.name === 'BaseSlideOver'">
-                <UiButton
-                  label="Open SlideOver"
-                  @click="showSlideOver = true"
-                />
-                <BaseSlideOver v-model:open="showSlideOver"
-                  ><div class="p-4">
-                    SlideOver content goes here
-                  </div></BaseSlideOver
-                >
-              </div>
+              <UiModal v-if="component.name === 'UiModal'"
+                ><template #content
+                  ><div class="p-4">Modal content goes here</div></template
+                ></UiModal
+              ><UiSlideOver v-if="component.name === 'UiSlideOver'"
+                ><template #content
+                  ><div class="p-4">SlideOver content goes here</div></template
+                ></UiSlideOver
+              >
               <div class="w-96" v-if="component.name === 'UiFileUploader'">
                 <UiFileUploader
                   :file-types="['.jpg', '.png', '.pdf']"
@@ -749,15 +695,13 @@ const route = useRoute();
                 class="flex gap-x-4 gap-y-4"
                 v-if="component.name === 'UiDropdown'"
               >
-                <UiDropdown />
-                <UiDropdown
+                <UiDropdown /><UiDropdown
                   placement="top"
                   :options="[
                     { label: 'Edit', icon: 'heroicons:pencil-square' },
                     { label: 'Delete', icon: 'heroicons:trash' },
                   ]"
-                />
-                <UiDropdown trigger="hover" placement="bottom"
+                /><UiDropdown trigger="hover" placement="bottom"
                   ><UiButton label="Hover me"
                 /></UiDropdown>
               </div>
