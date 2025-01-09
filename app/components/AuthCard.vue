@@ -29,12 +29,12 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
     <div class="flex flex-col gap-y-2">
       <UiButton
         class="w-full"
-        type="outline"
+        variant="outline"
         label="Continue with Github"
         left-icon="carbon:logo-github"
       /><UiButton
         class="w-full"
-        type="outline"
+        variant="outline"
         label="Continue with Google"
         left-icon="carbon:logo-google"
       />

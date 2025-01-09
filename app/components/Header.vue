@@ -44,8 +44,8 @@ let navItems = [
         id="header-right"
       >
         <ThemeChanger />
-        <UiButton type="outline" size="small" label="Sign in" />
-        <UiButton size="small" type="primary" label="Get Started" />
+        <UiButton variant="outline" size="small" label="Sign in" />
+        <UiButton size="small" variant="primary" label="Get Started" />
       </div>
     </div>
   </div>

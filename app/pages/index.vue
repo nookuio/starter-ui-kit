@@ -56,13 +56,13 @@ function showNotification() {
           Buttons
         </h2>
         <div class="grid gap-x-4 gap-y-4 grid-cols-4">
-          <UiButton label="Primary Button" /><UiButton
+          <UiButton label="Primary Button" variant="primary" /><UiButton
             label="Secondary Button"
-            type="secondary"
-          /><UiButton label="Outline Button" type="outline" /><UiButton
+            variant="secondary"
+          /><UiButton label="Outline Button" variant="outline" /><UiButton
             label="With Icon"
             left-icon="heroicons:bolt"
-            type="primary"
+            variant="primary"
           />
         </div>
       </section>

@@ -50,10 +50,16 @@ let components: ComponentDoc[] = [
         description: 'Button size',
       },
       {
-        name: 'type',
+        name: 'variant',
         type: "'primary' | 'secondary' | 'outline'",
         default: 'primary',
         description: 'Button style',
+      },
+      {
+        name: 'type',
+        type: "'button' | 'submit' | 'reset'",
+        default: 'button',
+        description: 'Button Type',
       },
     ],
     slots: [
@@ -596,11 +602,11 @@ const route = useRoute();
               >
                 <UiButton label="Primary" /><UiButton
                   label="Secondary"
-                  type="secondary"
+                  variant="secondary"
                 /><UiButton
                   class="w-[100px]"
                   label="Outline"
-                  type="outline"
+                  variant="outline"
                 /><UiButton
                   label="With Icon"
                   left-icon="heroicons:bolt"
