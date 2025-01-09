@@ -16,17 +16,25 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
   >
     <div class="flex flex-col gap-y-1">
       <h2 class="text-2xl font-bold text-neutral-950 dark:text-white">
-        {{ currentView === 'signIn' ? 'Welcome Back' : 'Get Started' }}
+        {{
+          currentView === 'signIn'
+            ? 'Welcome Back'
+            : currentView === 'signUp'
+              ? 'Get Started'
+              : 'Reset Password'
+        }}
       </h2>
       <p class="text-[13px]">
         {{
           currentView === 'signIn'
             ? 'Sign in to your account'
-            : 'Create a new account'
+            : currentView === 'signUp'
+              ? 'Create a new account'
+              : 'Enter your email to reset your password'
         }}
       </p>
     </div>
-    <div class="flex flex-col gap-y-2">
+    <div class="flex flex-col gap-y-2" v-if="currentView !== 'forgotPassword'">
       <UiButton
         class="w-full"
         variant="outline"
@@ -39,7 +47,10 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
         left-icon="carbon:logo-google"
       />
     </div>
-    <div class="flex h-10 items-center justify-center relative">
+    <div
+      class="flex h-10 items-center justify-center relative"
+      v-if="currentView !== 'forgotPassword'"
+    >
       <span
         class="w-full h-px bg-neutral-200 absolute top-[22px] dark:bg-neutral-800"
       ></span
@@ -57,24 +68,21 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
               >First name</label
             ><UiInput
               placeholder="First name"
-              v-model:bind-value="slate.first_name"
+              v-model:value="slate.first_name"
             />
           </div>
           <div class="flex w-1/2 flex-col">
             <label class="block mb-2 text-xs font-medium" for="last-name"
               >Last name</label
-            ><UiInput
-              placeholder="Last name"
-              v-model:bind-value="slate.last_name"
-            />
+            ><UiInput placeholder="Last name" v-model:value="slate.last_name" />
           </div>
         </div>
         <div class="flex flex-col">
           <label class="block mb-2 text-xs font-medium" for="email">Email</label
           ><UiInput
             placeholder="you@example.com"
-            v-model:bind-value="slate.email"
             type="email"
+            v-model:value="slate.email"
           />
         </div>
         <div class="flex flex-col">
@@ -83,7 +91,7 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
           ><UiInput
             placeholder="••••••••"
             type="password"
-            v-model:bind-value="slate.password"
+            v-model:value="slate.password"
           />
         </div>
         <UiButton label="Sign Up" :loading="props?.loading" />
@@ -95,10 +103,7 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
       >
         <div class="flex flex-col">
           <label class="block mb-2 text-xs font-medium" for="email">Email</label
-          ><UiInput
-            placeholder="you@example.com"
-            v-model:bind-value="slate.email"
-          />
+          ><UiInput placeholder="you@example.com" v-model:value="slate.email" />
         </div>
         <div class="flex flex-col">
           <div class="flex items-center justify-between">
@@ -107,35 +112,55 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
             ><span
               class="text-neutral-600 cursor-pointer text-xs dark:text-neutral-400 hover:text-neutral-800 hover:underline dark:hover:text-neutral-100"
               @click="currentView = 'forgotPassword'"
-              >Forgot password?</span
             >
+              Forgot password?
+            </span>
           </div>
           <UiInput
             placeholder="••••••••"
             type="password"
-            v-model:bind-value="slate.password"
+            v-model:value="slate.password"
           />
         </div>
         <UiButton label="Sign In" :loading="props?.loading" />
       </form>
+      <form
+        class="ml-auto mr-auto w-full flex flex-col gap-y-2.5"
+        v-if="currentView === 'forgotPassword'"
+        id="forgot-password-form"
+      >
+        <div class="flex flex-col">
+          <label class="block mb-2 text-xs font-medium" for="email">Email</label
+          ><UiInput
+            placeholder="you@example.com"
+            type="email"
+            v-model:value="slate.email"
+          />
+        </div>
+        <UiButton label="Send Reset Link" :loading="props?.loading" />
+      </form>
     </div>
     <div class="flex text-xs font-medium justify-center gap-x-1">
       <span class="text-neutral-500 dark:text-neutral-400">{{
-        currentView !== 'signUp'
-          ? 'Already have an account?'
-          : `Don't have an account?`
+        currentView === 'forgotPassword'
+          ? 'Remember your password?'
+          : currentView === 'signUp'
+            ? 'Already have an account?'
+            : `Don't have an account?`
       }}</span
       ><span
         class="text-neutral-900 underline cursor-pointer dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300"
         v-if="currentView === 'signIn'"
         @click="currentView = 'signUp'"
-        >Sign up now</span
+      >
+        Sign up now </span
       ><span
         class="text-neutral-900 underline cursor-pointer dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300"
-        v-if="currentView !== 'signIn'"
+        v-if="currentView === 'signUp' || currentView === 'forgotPassword'"
         @click="currentView = 'signIn'"
-        >Sign in now</span
       >
+        Sign in now
+      </span>
     </div>
   </div>
 </template>
