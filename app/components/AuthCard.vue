@@ -5,6 +5,20 @@ interface Props {
 
 const props = defineProps<Props>();
 
+const emits = defineEmits<{
+  submit: [
+    {
+      type: 'signIn' | 'signUp' | 'forgotPassword';
+      data: {
+        email?: string;
+        password?: string;
+        first_name?: string;
+        last_name?: string;
+      };
+    },
+  ];
+}>();
+
 const currentView = ref<'signIn' | 'signUp' | 'forgotPassword'>('signUp');
 
 const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
@@ -83,6 +97,7 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
             placeholder="you@example.com"
             type="email"
             v-model:value="slate.email"
+            icon="carbon:email"
           />
         </div>
         <div class="flex flex-col">
@@ -92,9 +107,15 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
             placeholder="••••••••"
             type="password"
             v-model:value="slate.password"
+            icon="carbon:password"
           />
         </div>
-        <UiButton label="Sign Up" :loading="props?.loading" />
+        <UiButton
+          label="Sign Up"
+          :loading="props?.loading"
+          right-icon="carbon:direction-straight-right"
+          @click="emits('submit', { type: 'signUp', data: slate })"
+        />
       </form>
       <form
         class="ml-auto mr-auto w-full flex flex-col gap-y-2.5"
@@ -103,7 +124,11 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
       >
         <div class="flex flex-col">
           <label class="block mb-2 text-xs font-medium" for="email">Email</label
-          ><UiInput placeholder="you@example.com" v-model:value="slate.email" />
+          ><UiInput
+            placeholder="you@example.com"
+            v-model:value="slate.email"
+            icon="carbon:email"
+          />
         </div>
         <div class="flex flex-col">
           <div class="flex items-center justify-between">
@@ -120,9 +145,15 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
             placeholder="••••••••"
             type="password"
             v-model:value="slate.password"
+            icon="carbon:password"
           />
         </div>
-        <UiButton label="Sign In" :loading="props?.loading" />
+        <UiButton
+          label="Sign In"
+          :loading="props?.loading"
+          right-icon="carbon:direction-straight-right"
+          @click="emits('submit', { type: 'signIn', data: slate })"
+        />
       </form>
       <form
         class="ml-auto mr-auto w-full flex flex-col gap-y-2.5"
@@ -135,9 +166,15 @@ const slate = ref({ first_name: '', last_name: '', email: '', password: '' });
             placeholder="you@example.com"
             type="email"
             v-model:value="slate.email"
+            icon="carbon:email"
           />
         </div>
-        <UiButton label="Send Reset Link" :loading="props?.loading" />
+        <UiButton
+          label="Send Reset Link"
+          :loading="props?.loading"
+          right-icon="carbon:direction-straight-right"
+          @click="emits('submit', { type: 'forgotPassword', data: slate })"
+        />
       </form>
     </div>
     <div class="flex text-xs font-medium justify-center gap-x-1">

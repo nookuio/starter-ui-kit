@@ -34,7 +34,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="text-sm border-[1px] border-neutral-200 rounded-[6px] outline-none min-h-8 bg-zinc-50 border-solid text-neutral-900 flex items-center gap-x-1 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border-[1px] dark:border-neutral-800 focus-within:border-neutral-400 dark:focus-within:border-neutral-700 overflow-auto"
+    class="text-sm border border-neutral-200 rounded-md outline-none min-h-8 bg-zinc-50 border-solid text-neutral-900 flex items-center gap-x-1 overflow-auto flex-col dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border dark:border-neutral-800 focus-within:border-neutral-400 dark:focus-within:border-neutral-700"
     :class="
       props.disabled ? 'opacity-70 pointer-events-none cursor-not-allowed' : ''
     "
