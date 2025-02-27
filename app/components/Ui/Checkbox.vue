@@ -29,8 +29,8 @@ function updateValue() {
   >
     <span
       class="p-px checkbox group-[.active]:bg-neutral-800 group-[.active]:border-neutral-800 dark:group-[.active]:bg-white dark:group-[.active]:border-white"
-      ><Icon
-        class="text-white hidden dark:text-black group-[.active]:block"
+      ><Icon v-if="bindedValue || props.value"
+        class="text-white dark:text-black"
         name="mdi:check-bold"
     /></span>
     <span
@@ -42,6 +42,8 @@ function updateValue() {
 </template>
 
 <style scoped>
+ @reference "~/assets/css/main.css";
+
 .checkbox {
   @apply flex items-center justify-center min-w-3.5 min-h-3.5 max-w-3.5 max-h-3.5 border rounded border-neutral-300 dark:border-neutral-700 text-white group-hover:border-neutral-500 dark:group-hover:border-neutral-400/70;
 }

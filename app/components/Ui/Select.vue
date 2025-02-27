@@ -107,6 +107,7 @@ function handleSelect(index: number) {
 </template>
 
 <style>
+ @reference "~/assets/css/main.css";
 .v-popper--theme-dropdown .v-popper__inner {
   @apply bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800;
 }

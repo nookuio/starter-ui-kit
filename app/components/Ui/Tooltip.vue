@@ -44,8 +44,9 @@ const ariaId = useId();
 </template>
 
 <style>
+ @reference "~/assets/css/main.css";
 .v-popper--theme-tooltip .v-popper__inner {
-  @apply text-xs bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 shadow min-h-6 h-fit max-w-72 py-1 px-2.5 flex items-center justify-center rounded !important;
+  @apply text-xs! bg-white! dark:bg-neutral-900! border! border-neutral-300! dark:border-neutral-700! text-neutral-900! dark:text-neutral-100! shadow! min-h-6! h-fit! max-w-72! py-1! px-2.5! flex! items-center! justify-center! rounded!;
 }
 
 .v-popper--theme-tooltip .v-popper__arrow-outer {

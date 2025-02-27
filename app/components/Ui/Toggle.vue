@@ -27,11 +27,12 @@ const value = defineModel<boolean>('value');
 </template>
 
 <style scoped>
+ @reference "~/assets/css/main.css";
 .enabled {
-  @apply bg-neutral-900 dark:bg-neutral-100 !important;
+  @apply bg-neutral-900! dark:bg-neutral-100!;
 }
 
 .enabled-switch {
-  @apply shadow-neutral-950 dark:shadow-neutral-100 !important;
+  @apply shadow-neutral-950! dark:shadow-neutral-100!;
 }
 </style>

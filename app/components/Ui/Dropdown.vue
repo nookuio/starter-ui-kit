@@ -93,7 +93,7 @@ function handleSelect(option: any, index: number) {
       >
         <slot name="dropdown"
           ><div
-            class="flex items-center pl-2 pr-2 cursor-pointer rounded gap-x-3 justify-between hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 group"
+            class="flex items-center pl-2 pr-2 cursor-pointer rounded gap-x-3 justify-between hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
             v-for="(option, i) in props.options"
             :key="
               ['string', 'number'].includes(typeof option)
@@ -117,8 +117,8 @@ function handleSelect(option: any, index: number) {
                 size="13"
               /><span class="line-clamp-1">{{ option?.label || option }}</span>
             </div>
-            <Icon
-              class="min-w-3.5 min-h-3.5 hidden group-[.active-option]:block"
+            <Icon v-if="props?.selected === i"
+              class="min-w-3.5 min-h-3.5"
               name="heroicons:check"
               size="13"
             /></div
@@ -127,6 +127,7 @@ function handleSelect(option: any, index: number) {
 </template>
 
 <style>
+ @reference "~/assets/css/main.css";
 .v-popper--theme-dropdown .v-popper__inner {
   @apply bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800;
 }

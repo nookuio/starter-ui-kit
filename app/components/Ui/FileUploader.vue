@@ -111,7 +111,9 @@ function handleDrop(event: DragEvent) {
 </template>
 
 <style scoped>
+ @reference "~/assets/css/main.css";
+
 .dropping {
-  @apply border-blue-500 dark:border-blue-500 !important;
+  @apply border-blue-500! dark:border-blue-500!;
 }
 </style>

@@ -1,18 +1,26 @@
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
-  vite: { server: { hmr: { overlay: false } } },
+  css: ['~/assets/css/main.css'],
+
+  vite: { 
+    server: { hmr: { overlay: false } },
+    plugins: [tailwindcss()],
+  },
+
   devtools: { enabled: false },
+
   modules: [
-    '@nookuio/nuxt',
     '@vueuse/nuxt',
     '@nuxt/fonts',
-    '@nuxtjs/tailwindcss',
     'floating-vue/nuxt',
     '@nuxt/icon',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
+    '@nookuio/nuxt',
   ],
+
   future: { compatibilityVersion: 4 },
-  colorMode: {
-    classSuffix: ''
-  }
+  colorMode: { classSuffix: '' },
+  compatibilityDate: '2025-02-06',
 });
