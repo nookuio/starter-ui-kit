@@ -76,6 +76,7 @@ function showNotification() {
             icon="heroicons:magnifying-glass"
             v-model:value="inputValue"
           /><UiMultilineInput
+            class="min-h-[100px]"
             placeholder="Multiline Input"
             v-model:value="inputValue"
           />
