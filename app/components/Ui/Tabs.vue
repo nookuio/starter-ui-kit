@@ -39,7 +39,7 @@ const marginLeft = computed(() => {
 
 <template>
   <div
-    class="border border-[#E5E5E540] rounded-md outline-none bg-neutral-100 border-solid text-neutral-500 cursor-pointer flex items-center p-px dark:bg-neutral-900 dark:text-neutral-400 dark:border-solid dark:border dark:border-neutral-800"
+    class="border border-[#E5E5E540] rounded-md outline-hidden bg-neutral-100 border-solid text-neutral-500 cursor-pointer flex items-center p-px dark:bg-neutral-900 dark:text-neutral-400 dark:border-solid dark:border dark:border-neutral-800"
     :style="{
       minHeight: styles?.height,
       height: styles?.height,

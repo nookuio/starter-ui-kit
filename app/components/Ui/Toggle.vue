@@ -10,7 +10,7 @@ const value = defineModel<boolean>('value');
 
 <template>
   <div
-    class="text-sm border border-[#E5E5E540] rounded-[999px] outline-none min-h-6 bg-neutral-200 border-solid text-neutral-500 cursor-pointer flex items-center p-px w-[45px] dark:bg-neutral-900 dark:text-neutral-400 dark:border-solid dark:border dark:border-neutral-800"
+    class="text-sm border border-[#E5E5E540] rounded-[999px] outline-hidden min-h-6 bg-neutral-200 border-solid text-neutral-500 cursor-pointer flex items-center p-px w-[45px] dark:bg-neutral-900 dark:text-neutral-400 dark:border-solid dark:border dark:border-neutral-800"
     :class="[
       value ? 'enabled' : '',
       props.disabled ? 'opacity-70 pointer-events-none cursor-not-allowed' : '',

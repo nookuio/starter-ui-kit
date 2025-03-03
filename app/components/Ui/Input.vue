@@ -49,7 +49,7 @@ const inputType = computed(() => {
 
 <template>
   <div
-    class="text-sm pl-2 pr-1.5 border border-neutral-200 rounded-md outline-none bg-zinc-50 border-solid text-neutral-900 flex items-center gap-x-1 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border dark:border-neutral-800 focus-within:border-neutral-400 dark:focus-within:border-neutral-700 has-[input:invalid]:border-red-500 dark:has-[input:invalid]:border-red-500"
+    class="text-sm pl-2 pr-1.5 border border-neutral-200 rounded-md outline-hidden bg-zinc-50 border-solid text-neutral-900 flex items-center gap-x-1 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border dark:border-neutral-800 focus-within:border-neutral-400 dark:focus-within:border-neutral-700 has-[input:invalid]:border-red-500 dark:has-[input:invalid]:border-red-500"
     :class="
       props.disabled ? 'opacity-70 pointer-events-none cursor-not-allowed' : ''
     "
@@ -61,7 +61,7 @@ const inputType = computed(() => {
       :name="props?.icon"
       size="13"
     /><input
-      class="outline-none text-neutral-900 bg-transparent min-h-full grow placeholder:text-neutral-400 dark:text-neutral-100"
+      class="outline-hidden text-neutral-900 bg-transparent min-h-full grow placeholder:text-neutral-400 dark:text-neutral-100"
       :type="inputType"
       :placeholder="props.placeholder"
       v-model="value"

@@ -74,7 +74,7 @@ function handleSelect(index: number) {
     :size="props?.size"
     @select="handleSelect($event)"
     ><div
-      class="text-sm pl-2 pr-2 border border-neutral-200 rounded-md outline-none bg-zinc-50 border-solid text-neutral-900 flex items-center cursor-pointer w-full justify-between gap-x-2 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border dark:border-neutral-800 hover:bg-neutral-100 hover:border-solid hover:border-neutral-300 hover:border dark:hover:bg-neutral-800 dark:hover:border-solid dark:hover:border-neutral-700 dark:hover:border"
+      class="text-sm pl-2 pr-2 border border-neutral-200 rounded-md outline-hidden bg-zinc-50 border-solid text-neutral-900 flex items-center cursor-pointer w-full justify-between gap-x-2 dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border dark:border-neutral-800 hover:bg-neutral-100 hover:border-solid hover:border-neutral-300 hover:border dark:hover:bg-neutral-800 dark:hover:border-solid dark:hover:border-neutral-700 dark:hover:border"
       ref="inputRef"
       :class="
         props?.disabled

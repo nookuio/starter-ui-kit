@@ -75,7 +75,7 @@ function handleSelect(option: any, index: number) {
     :disabled="props?.disabled"
     ><slot
       ><div
-        class="text-sm pl-2 pr-2 border border-neutral-200 rounded-md outline-none min-h-8 bg-zinc-50 border-solid text-neutral-900 flex items-center cursor-pointer justify-between gap-x-2 h-8 w-fit dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border dark:border-neutral-800 hover:bg-neutral-100 hover:border-solid hover:border-neutral-300 hover:border dark:hover:bg-neutral-800 dark:hover:border-solid dark:hover:border-neutral-700 dark:hover:border"
+        class="text-sm pl-2 pr-2 border border-neutral-200 rounded-md outline-hidden min-h-8 bg-zinc-50 border-solid text-neutral-900 flex items-center cursor-pointer justify-between gap-x-2 h-8 w-fit dark:bg-neutral-900 dark:text-neutral-100 dark:border-solid dark:border dark:border-neutral-800 hover:bg-neutral-100 hover:border-solid hover:border-neutral-300 hover:border dark:hover:bg-neutral-800 dark:hover:border-solid dark:hover:border-neutral-700 dark:hover:border"
       >
         <Icon
           class="min-w-4 min-h-4 text-neutral-400"

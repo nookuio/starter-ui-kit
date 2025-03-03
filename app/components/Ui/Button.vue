@@ -38,7 +38,7 @@ const styles = computed(() => {
 
 <template>
   <button
-    class="bg-neutral-950 cursor-pointer rounded-md font-medium pl-4 pr-4 text-white transition-colors flex items-center gap-x-1 justify-center outline-none hover:bg-neutral-800 disabled:opacity-70 disabled:pointer-events-none dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+    class="bg-neutral-950 cursor-pointer rounded-md font-medium pl-4 pr-4 text-white transition-colors flex items-center gap-x-1 justify-center outline-hidden hover:bg-neutral-800 disabled:opacity-70 disabled:pointer-events-none dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
     v-if="props?.variant === 'primary'"
     :style="{
       fontSize: styles?.fontSize,
@@ -48,7 +48,6 @@ const styles = computed(() => {
     :disabled="props.disabled"
     :class="{ 'pointer-events-none opacity-70': props.loading }"
     :type="props.type"
-    test="true"
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
@@ -67,7 +66,7 @@ const styles = computed(() => {
     /></slot>
   </button>
   <button
-    class="bg-neutral-100 cursor-pointer rounded-md font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center outline-none hover:bg-neutral-200 disabled:opacity-70 disabled:pointer-events-none dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-900"
+    class="bg-neutral-100 cursor-pointer rounded-md font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center outline-hidden hover:bg-neutral-200 disabled:opacity-70 disabled:pointer-events-none dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-900"
     v-else-if="props?.variant === 'secondary'"
     :style="{
       fontSize: styles?.fontSize,
@@ -77,7 +76,6 @@ const styles = computed(() => {
     :disabled="props.disabled"
     :class="{ 'pointer-events-none opacity-70': props.loading }"
     :type="props.type"
-    test="true"
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
@@ -96,7 +94,7 @@ const styles = computed(() => {
     /></slot>
   </button>
   <button
-    class="bg-white cursor-pointer rounded-md font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center border border-neutral-200 outline-none hover:bg-neutral-100 disabled:opacity-70 disabled:pointer-events-none dark:text-white dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800"
+    class="bg-white cursor-pointer rounded-md font-medium pl-4 pr-4 text-neutral-900 transition-colors flex items-center gap-x-1 justify-center border border-neutral-200 outline-hidden hover:bg-neutral-100 disabled:opacity-70 disabled:pointer-events-none dark:text-white dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-800"
     v-else-if="props?.variant === 'outline'"
     :style="{
       fontSize: styles?.fontSize,
@@ -106,7 +104,6 @@ const styles = computed(() => {
     :disabled="props.disabled"
     :class="{ 'pointer-events-none opacity-70': props.loading }"
     :type="props.type"
-    test="true"
     @click="emit('click', $event)"
   >
     <slot v-if="props?.loading" name="loading"
