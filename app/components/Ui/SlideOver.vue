@@ -13,15 +13,25 @@ const props = withDefaults(defineProps<Props>(), {
   width: 400,
 });
 
-const open = ref<boolean>(false);
+const open = defineModel<boolean>('open', { default: false });
 
-function close() {
+const emits = defineEmits<{ close: [MouseEvent]; open: [MouseEvent] }>();
+
+function close(event: MouseEvent) {
   open.value = !open.value;
+
+  emits('close', event);
 }
 </script>
 
 <template>
-  <div class="flex" @click="open = !open">
+  <div
+    class="flex"
+    @click="
+      open = !open;
+      emits('open', $event);
+    "
+  >
     <slot><UiButton label="Open Sideover" /></slot
     ><Teleport to="body"
       ><Transition
@@ -67,7 +77,7 @@ function close() {
         ><div
           class="fixed bg-[#00000040] z-10 top-0 bottom-0 left-0 right-0"
           v-if="open"
-          @click="close()"
+          @click="close($event)"
         ></div></Transition
     ></Teleport>
   </div>

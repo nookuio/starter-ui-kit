@@ -13,15 +13,25 @@ const props = withDefaults(defineProps<Props>(), {
   width: 800,
 });
 
-const open = ref<boolean>(false);
+const open = defineModel<boolean>('open', { default: false });
 
-function closeModal() {
+const emits = defineEmits<{ close: [MouseEvent]; open: [MouseEvent] }>();
+
+function closeModal(event: MouseEvent) {
   open.value = false;
+
+  emits('close', event);
 }
 </script>
 
 <template>
-  <div class="flex" @click="open = !open">
+  <div
+    class="flex"
+    @click="
+      open = !open;
+      emits('open', $event);
+    "
+  >
     <slot><UiButton label="Open Modal" /></slot
     ><Teleport to="body"
       ><Transition
@@ -35,6 +45,7 @@ function closeModal() {
           class="rounded-lg bg-white shadow-2xl fixed top-[50%] left-[50%] z-[11] text-neutral-900 flex flex-col overflow-auto dark:bg-neutral-900 dark:text-zinc-50 translate-x-[-50%] translate-y-[-50%]"
           v-if="open"
           :style="{ height: `${props?.height}px`, width: `${props?.width}px` }"
+          @click.stop
         >
           <div
             class="flex min-h-8 items-center pl-2 pr-2 justify-between border-b border-b-neutral-200 dark:border-b-neutral-800"
@@ -61,7 +72,7 @@ function closeModal() {
         ><div
           class="fixed z-10 top-0 left-0 bottom-0 right-0 bg-[#00000040] dark:bg-[#00000080] modal-backdrop"
           v-if="open"
-          @click="closeModal()"
+          @click="closeModal($event)"
         ></div></Transition
     ></Teleport>
   </div>

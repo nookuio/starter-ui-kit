@@ -10,17 +10,17 @@ const props = withDefaults(defineProps<Props>(), {
   multiple: false,
 });
 
-const emit = defineEmits<{ update: [files: File[]] }>();
+const bindValue = defineModel<File[]>('bindValue');
 
-const bindValue = defineModel<File[]>('bindValue', { default: () => [] })
+const emit = defineEmits<{ update: [files: File[]] }>();
 
 const isDragging = ref(false);
 
 const fileInput = ref<HTMLInputElement | null>(null);
 
-const acceptedFileTypes = computed(() => {
-  return props.fileTypes?.length > 0 ? props.fileTypes.join(',') : '*';
-});
+const acceptedFileTypes = computed(() =>
+  props.fileTypes?.length > 0 ? props.fileTypes.join(',') : '*',
+);
 
 function formatFileSize(size: number) {
   if (size < 1024) {
@@ -63,8 +63,8 @@ function handleDrop(event: DragEvent) {
 
 <template>
   <div
-    class="flex flex-col items-center p-6 border-[1px] rounded-[8px] text-neutral-900 border-neutral-200 bg-zinc-50 dark:text-zinc-50 dark:border-neutral-800 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 file-uploader"
-    :class="isDragging ? 'dropping' : ''"
+    class="flex flex-col items-center p-6 border rounded-lg text-neutral-900 border-neutral-200 bg-zinc-50 dark:text-zinc-50 dark:border-neutral-800 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 file-uploader"
+    :class="isDragging ? 'border-blue-500! dark:border-blue-500!' : ''"
     @dragover.prevent="isDragging = true"
     @dragleave.prevent="isDragging = false"
     @drop.prevent="handleDrop"
@@ -90,17 +90,12 @@ function handleDrop(event: DragEvent) {
       v-if="bindValue?.length > 0"
     >
       <li
-        class="flex justify-between border-b-[1px] pt-1 pb-1 border-neutral-200 dark:border-neutral-800 last:border-b-0"
+        class="flex justify-between border-b pt-1 pb-1 border-neutral-200 dark:border-neutral-800 last:border-b-0"
         v-for="(file, index) in bindValue"
         :key="index"
       >
-        <span
-          >{{ file.name }}
-          (
-          {{ formatFileSize(file.size) }}
-          )</span
-        >
-        <span
+        <span>{{ file.name }} ( {{ formatFileSize(file.size) }} )</span
+        ><span
           class="text-red-500"
           v-if="props.maxSize && file.size > props.maxSize * 1024"
           >File too large</span
@@ -109,11 +104,3 @@ function handleDrop(event: DragEvent) {
     </ul>
   </div>
 </template>
-
-<style scoped>
- @reference "~/assets/css/main.css";
-
-.dropping {
-  @apply border-blue-500! dark:border-blue-500!;
-}
-</style>
